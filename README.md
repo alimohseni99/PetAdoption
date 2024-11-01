@@ -85,7 +85,6 @@ The Pet Adoption API allows users to manage pet adoptions. Users can view availa
 ## Project Board
 A project board is set up to track the progress of the project. The board is divided into columns for each half-day to show the order in which tasks were completed.
 
-
 ## Excalidraw
 
 ![Exalidraw big picture plan](https://github.com/user-attachments/assets/8bbd0c74-e257-420b-9140-2ce37b39419b)
