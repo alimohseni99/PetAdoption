@@ -4,7 +4,7 @@ export function createApp() {
   const app = express();
   app.use(express.json());
   app.get("/", (req, res) => {
-    res.send("Welcome to Pet Adoption!");
+    res.send("Welcome to Pet Adoption!").status(200);
   });
   return app;
 }
