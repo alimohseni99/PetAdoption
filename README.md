@@ -1,56 +1,92 @@
-# PetAdoption
+# Pet Adoption API
 
-PetAdoption is a web API project built using Express.js for managing pet adoptions. This project was created as part of a weekend assignment.
+This project is a web API for managing pet adoptions. Users can view available pets, adopt pets, and manage their adopted pets. The API has two main features: Pet Management and Adoption Management.
 
-## Project Overview
+## Table of Contents
+- Overview
+- [Tech Stack](#tech-stack)
+- Features
+- Routes
+- Setup
+- Testing
+- [Project Board](#project-board)
+- Excalidraw
 
-This project includes the following features:
-- A backend API built with Express.js.
-- Integration tests for each route.
-- Unit tests following the ZOMBIES pattern.
+## Overview
+The Pet Adoption API allows users to manage pet adoptions. Users can view available pets, adopt pets, and manage their adopted pets. The API has two main features: Pet Management and Adoption Management.
 
 ## Tech Stack
-
 - TypeScript
-- Node.js
+- TSX
+- Node.js test runner
 - Express.js
 - Supertest
 - Zod
 - UUID
 
 ## Features
+1. **Pet Management**
+   - Add a new pet
+   - Get all available pets
+   - Get a pet by ID
+   - Update pet details
+   - Delete a pet
 
-The application includes the following routes:
-- `GET /api/pets`: Get all pets.
-- `POST /api/pets`: Create a new pet.
-- `GET /api/pets/:id`: Get a pet by ID.
-- `DELETE /api/pets/:id`: Delete a pet by ID.
-- `PUT /api/pets/:id`: Update a pet by ID.
+2. **Adoption Management**
+   - Adopt a pet
+   - Get all adopted pets
+   - Get an adopted pet by ID
+   - Update adoption details
+   - Return a pet (delete adoption)
 
-## Project Structure
+## Routes
+1. **Pet Management**
+   - `GET /pets` - Get all available pets
+   - `POST /pets` - Add a new pet
+   - `GET /pets/:id` - Get a pet by ID
+   - `PUT /pets/:id` - Update a pet
+   - `DELETE /pets/:id` - Delete a pet
 
-- The code architecture follows best practices with tidy naming conventions and factory functions.
-- Features are isolated and do not directly access each other's database data. Inter-feature communication is done through service methods.
+2. **Adoption Management**
+   - `POST /adoptions` - Adopt a pet
+   - `GET /adoptions` - Get all adopted pets
+   - `GET /adoptions/:id` - Get an adopted pet by ID
+   - `PUT /adoptions/:id` - Update adoption details
+   - `DELETE /adoptions/:id` - Return a pet
+
+## Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/pet-adoption-api.git
+   cd petadoption
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the server:
+   ```bash
+   npm start
+   ```
 
 ## Testing
-
-- Each route has an integration test.
-- Unit tests are implemented for at least one feature using pure functions without side effects.
-
-## Presentation
-
-A video presentation is available showcasing:
-- An introduction to the developer.
-- An overview of the project and its big picture plan.
-- A demonstration of the project board and the work completed over the weekend.
-- A live demo of the application and its test cases.
-- A walkthrough of the code fulfilling the project requirements.
-
-## Getting Started
-
-To get started with the project, follow these steps:
-
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/alimohseni99/PetAdoption.git
+1. Run integration tests:
+   ```bash
+   npm test
    ```
+
+2. Run unit tests:
+   ```bash
+   npm run test:unit
+   ```
+
+## Project Board
+A project board is set up to track the progress of the project. The board is divided into columns for each half-day to show the order in which tasks were completed.
+
+
+## Excalidraw
+
+![Exalidraw big picture plan](https://github.com/user-attachments/assets/8bbd0c74-e257-420b-9140-2ce37b39419b)
+
