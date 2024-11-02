@@ -1,15 +1,17 @@
-type Db = {
-  adoption: {
-    create: (data: any) => Promise<void>;
+import { v4 } from "uuid";
+import { Db, Input } from "../types";
+export const createAdoption = (db: Db) => async (input: Input) => {
+  const id = v4();
+  const adoptionData = {
+    id,
+    petId: input.petId,
+    adopterName: input.adopterName,
   };
-};
 
-const createFactory = () => {
-  return {};
-};
-
-const validateInput = (input: Input): void => {
-  if (!input.petId || !input.adopterName) {
-    throw new Error("Invalid input");
+  try {
+    await db.create(adoptionData);
+  } catch (error) {
+    throw new Error("Failede to craete adoption");
   }
+  return { id };
 };
