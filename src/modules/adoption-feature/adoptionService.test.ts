@@ -6,7 +6,10 @@ jest.mock("uuid", () => ({
 }));
 
 const db: Db = {
-  create: jest.fn(),
+  adoption: {
+    create: jest.fn(),
+    getAll: jest.fn(),
+  },
 };
 
 const adoptionService = AdoptionService(db);
@@ -16,7 +19,7 @@ describe("AdoptionService", () => {
     const input = { petId: "1", adopterName: "Daniel" };
     await adoptionService.adopt(input);
 
-    expect(db.create).toHaveBeenCalledWith({
+    expect(db.adoption.create).toHaveBeenCalledWith({
       id: "mocked-uuid",
       petId: "1",
       adopterName: "Daniel",

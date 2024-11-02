@@ -10,7 +10,7 @@ export const createAdoption = (db: Db) => async (input: Input) => {
   };
 
   try {
-    await db.create(adoptionData);
+    await db.adoption.create(adoptionData);
   } catch (error) {
     throw new Error("Failede to craete adoption");
   }

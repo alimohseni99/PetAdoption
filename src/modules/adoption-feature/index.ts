@@ -6,5 +6,6 @@ export function createAdoptionModule(db: Db) {
   const service = AdoptionService(db);
   return {
     adopt: routerController(service),
+    getAll: routerController(service),
   };
 }
