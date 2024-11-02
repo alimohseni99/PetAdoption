@@ -1,5 +1,6 @@
 import { v4 } from "uuid";
-import { Db, Input } from "../types";
+import { Db } from "../types";
+import { Input } from "./input";
 export const createAdoption = (db: Db) => async (input: Input) => {
   const id = v4();
   const adoptionData = {

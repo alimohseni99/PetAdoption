@@ -7,8 +7,3 @@ export type AdoptionData = {
 export type Db = {
   create: (data: AdoptionData) => Promise<void>;
 };
-
-export type Input = {
-  petId: string;
-  adopterName: string;
-};
