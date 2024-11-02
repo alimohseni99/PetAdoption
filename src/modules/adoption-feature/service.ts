@@ -1,8 +1,8 @@
 import { createAdoption } from "./create";
 import { Db } from "./types";
 
-export function serviceFacotry(db: Db) {
+export function AdoptionService(db: Db) {
   return {
-    createAdoption: createAdoption(db),
+    adopt: createAdoption(db),
   };
 }
