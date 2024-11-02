@@ -1,20 +1,23 @@
 import express from "express";
 import { createAdoptionModule } from "./modules";
-import { Db } from "./modules/adoption-feature/types";
+import { AdoptionData, Db } from "./modules/adoption-feature/types";
 function createDb(): Db {
-  const data: Cake[] = [];
-  return {};
+  const data: AdoptionData[] = [];
+  return {
+    create: async (adoptionData) => {
+      data.push(adoptionData);
+    },
+  };
 }
 export function createApp() {
   const app = express();
   app.use(express.json());
-  app.use(express.Router());
   app.get("/", (req, res) => {
     res.send("Welcome to Pet Adoption!").status(200);
   });
 
-  const adoptionModule = createAdoptionModule(db);
-  app.use("/adoption", adoptionModule.adopt);
+  const adoptionModule = createAdoptionModule(createDb());
+  app.use("/adopt", adoptionModule.adopt);
 
   return app;
 }
