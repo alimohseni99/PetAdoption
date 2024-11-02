@@ -6,4 +6,5 @@ export type AdoptionData = {
 
 export type Db = {
   create: (data: AdoptionData) => Promise<void>;
+  getAll: () => Promise<AdoptionData[]>;
 };
