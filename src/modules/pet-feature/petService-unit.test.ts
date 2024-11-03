@@ -9,7 +9,8 @@ const db: PetDb = {
   pets: {
     create: jest.fn().mockName("createMock"),
     getAllPets: jest.fn().mockName("getAllMock"),
-    deletePet: jest.fn().mockName("deletePetMock"),
+    deletePet: jest.fn().mockName("deleteMock"),
+    getPetById: jest.fn().mockName("getByIdMock"),
   },
 };
 
@@ -34,5 +35,9 @@ describe("PetService", () => {
   it("should delete a pet", async () => {
     await petService.deletePet("1");
     expect(db.pets.deletePet).toHaveBeenCalled();
+  });
+  it("should get a pet by id", async () => {
+    await petService.getPetById("1");
+    expect(db.pets.getPetById).toHaveBeenCalled();
   });
 });
