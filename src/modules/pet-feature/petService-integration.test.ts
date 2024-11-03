@@ -49,7 +49,6 @@ describe("PetService Integration Tests", () => {
       breed: "Cavalier",
       age: 3,
     };
-
     const respone = await request(app)
       .patch("/updatepet/mocked-uuid")
       .expect(200);
