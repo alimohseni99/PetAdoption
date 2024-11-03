@@ -21,7 +21,9 @@ export function routerController(service: ReturnType<typeof AdoptionService>) {
   });
 
   router.get("/:id", async (req, res) => {
-    const adoption = await service.getAdoptionById(req.params.id as string);
+    const adoption = await service.getAdoptionById({
+      id: req.params.id as string,
+    });
     if (!adoption) {
       res.status(404).send({ error: "Adoption not found" });
       return;

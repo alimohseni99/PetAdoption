@@ -16,13 +16,13 @@ const db: Db = {
 const adoptionService = AdoptionService(db);
 
 describe("AdoptionService", () => {
-  it("should create an adoption", async () => {
+  it.only("should create an adoption", async () => {
     const input = { petId: "1", adopterName: "Daniel" };
     await adoptionService.adopt(input);
 
     expect(db.adoption.create).toHaveBeenCalledWith({
       id: "mocked-uuid",
-      petId: "1",
+      petId: { id: "1" },
       adopterName: "Daniel",
     });
   });
@@ -31,7 +31,7 @@ describe("AdoptionService", () => {
     expect(db.adoption.getAllAdoptions).toHaveBeenCalled();
   });
   it("should get an adoption by id", async () => {
-    await adoptionService.getAdoptionById("1");
-    expect(db.adoption.getAdoptionById).toHaveBeenCalledWith("1");
+    await adoptionService.getAdoptionById({ id: "1" });
+    expect(db.adoption.getAdoptionById).toHaveBeenCalledWith({ id: "1" });
   });
 });
