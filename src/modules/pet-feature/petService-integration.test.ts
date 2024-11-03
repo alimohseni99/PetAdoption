@@ -5,7 +5,7 @@ jest.mock("uuid", () => ({
   v4: jest.fn(() => "mocked-uuid"),
 }));
 
-describe.only("PetService Integration Tests", () => {
+describe("PetService Integration Tests", () => {
   const app = createApp();
 
   beforeEach(async () => {
