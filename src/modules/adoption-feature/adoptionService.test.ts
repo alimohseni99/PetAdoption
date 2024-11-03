@@ -30,4 +30,8 @@ describe("AdoptionService", () => {
     await adoptionService.getAll();
     expect(db.adoption.getAllAdoptions).toHaveBeenCalled();
   });
+  it("should get an adoption by id", async () => {
+    await adoptionService.getAdoptionById("1");
+    expect(db.adoption.getAdoptionById).toHaveBeenCalledWith("1");
+  });
 });
