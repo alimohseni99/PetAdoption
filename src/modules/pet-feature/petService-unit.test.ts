@@ -12,3 +12,17 @@ const db: PetDb = {
 };
 
 const adoptionService = PetService(db);
+
+describe.only("PetService", () => {
+  it("should create an pet", async () => {
+    const input = { id: "1", name: "Daniel", breed: "Cavalier", age: 3 };
+    await adoptionService.addPet(input);
+
+    expect(db.pets.create).toHaveBeenCalledWith({
+      id: "mocked-uuid",
+      name: "Daniel",
+      breed: "Cavalier",
+      age: 3,
+    });
+  });
+});
