@@ -28,4 +28,16 @@ describe.only("AdoptionService Integration Tests", () => {
       adopterName: "Daniel",
     });
   });
+  it("Should get all adoptions", async () => {
+    const mockAdoptions = [
+      {
+        id: "mocked-uuid",
+        petId: "1",
+        adopterName: "Daniel",
+      },
+    ];
+    const response = await request(app).get("/getall").expect(200);
+
+    expect(response.body).toEqual(mockAdoptions);
+  });
 });
