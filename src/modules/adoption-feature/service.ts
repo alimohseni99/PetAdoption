@@ -2,8 +2,8 @@ import { createAdoption } from "./create";
 import { deleteAdoption } from "./delete";
 import { getAdoptionById } from "./get";
 import { getAllAdoptions } from "./get-all";
-import { patchAdoption } from "./patch";
 import { Db } from "./types";
+import { patchAdoption } from "./update";
 
 export function AdoptionService(db: Db) {
   return {

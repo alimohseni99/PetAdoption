@@ -13,5 +13,5 @@ export const createAdoption = (db: Db) => async (input: Input) => {
   } catch (error) {
     throw new Error("Failed to craete adoption");
   }
-  return { id };
+  return adoptionData;
 };

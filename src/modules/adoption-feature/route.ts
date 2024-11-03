@@ -6,8 +6,7 @@ export function routerController(service: ReturnType<typeof AdoptionService>) {
 
   router.post("/", async (req, res) => {
     const { petId, adopterName } = req.body;
-    const { id } = await service.adopt({ petId, adopterName });
-    const adoption = await service.getAdoptionById({ id });
+    const adoption = await service.adopt({ petId, adopterName });
     res.status(201).json(adoption);
   });
 
