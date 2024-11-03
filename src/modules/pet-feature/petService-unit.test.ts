@@ -41,4 +41,16 @@ describe("PetService", () => {
     await petService.getPetById("1");
     expect(db.pets.getPetById).toHaveBeenCalled();
   });
+  it("should update a pet", async () => {
+    const id = "1";
+    const mockResult = {
+      id: "mocked-uuid",
+      name: "Bruno",
+      breed: "Husky",
+      age: 4,
+    };
+    (db.pets.updatePet as jest.Mock).mockResolvedValue(mockResult);
+    const result = await petService.updatePet(id, mockResult);
+    expect(result).toEqual(mockResult);
+  });
 });
