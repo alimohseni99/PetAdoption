@@ -43,6 +43,7 @@ function createPetDb(): PetDb {
   const data: PetType[] = [];
   return {
     pets: {
+      getAllPets: async () => data,
       create: async (PetInfo: PetType): Promise<void> => {
         data.push(PetInfo);
       },
@@ -67,6 +68,7 @@ export function createApp() {
 
   const petModule = createPetModule(createPetDb());
   app.use("/addPet", petModule.addPet);
+  app.use("/getallpets", petModule.getAll);
 
   return app;
 }

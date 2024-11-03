@@ -15,8 +15,7 @@ export function routerController(service: ReturnType<typeof PetService>) {
       const pets = await service.getAllPets();
       res.json(pets);
     } catch (error) {
-      res.status(404).send({ error: "Pets not found" });
-      return;
+      res.status(500).send({ error: "Failed to fetch pets" });
     }
   });
 

@@ -15,7 +15,6 @@ export function routerController(service: ReturnType<typeof AdoptionService>) {
       const adoptions = await service.getAll();
       res.json(adoptions);
     } catch (error) {
-      console.log(error);
       res.status(500).send({ error: "Failed to fetch adoptions" });
     }
   });
