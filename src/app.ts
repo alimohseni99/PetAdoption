@@ -28,12 +28,13 @@ function createDb(): Db {
       patchAdoption: async (
         id: string,
         adoptionData: Partial<AdoptionData>
-      ): Promise<void> => {
+      ): Promise<AdoptionData> => {
         const index = data.findIndex((adoption) => adoption.id === id);
         if (index === -1) {
           throw new Error(`Adoption with id ${id} not found`);
         }
         data[index] = { ...data[index], ...adoptionData };
+        return data[index];
       },
     },
   };

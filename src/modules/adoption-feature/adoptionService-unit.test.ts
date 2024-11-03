@@ -36,10 +36,6 @@ describe("AdoptionService", () => {
     await adoptionService.getAdoptionById({ id: "1" });
     expect(db.adoption.getAdoptionById).toHaveBeenCalledWith("1");
   });
-  it("should delete an adoption", async () => {
-    await adoptionService.deleteAdoption({ id: "1" });
-    expect(db.adoption.deleteAdoption).toHaveBeenCalledWith("1");
-  });
   it("should update an adoption", async () => {
     const id = "1";
     const mockResult = { id: "1", adopterName: "Daniel" };
@@ -47,5 +43,8 @@ describe("AdoptionService", () => {
     const result = await adoptionService.patchAdoption({ id }, mockResult);
     expect(result).toEqual(mockResult);
   });
-
+  it("should delete an adoption", async () => {
+    await adoptionService.deleteAdoption({ id: "1" });
+    expect(db.adoption.deleteAdoption).toHaveBeenCalledWith("1");
+  });
 });

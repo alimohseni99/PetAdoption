@@ -31,13 +31,6 @@ describe("PetService Integration Tests", () => {
     expect(respone.body).toEqual(mockPets);
   });
 
-  it("Should delete a pet", async () => {
-    const respone = await request(app)
-      .delete("/deletepet/mocked-uuid")
-      .expect(204);
-    expect(respone.body).toEqual({});
-  });
-
   it.skip("Should return a pet by id ", async () => {
     const mockPet = {
       id: "mocked-uuid",
@@ -47,5 +40,26 @@ describe("PetService Integration Tests", () => {
     };
     const respone = await request(app).get("/getpet/mocked-uuid").expect(200);
     expect(respone.body).toEqual(mockPet);
+  });
+
+  it("Should update a pet by id", async () => {
+    const mockPet = {
+      id: "mocked-uuid",
+      name: "Daniel",
+      breed: "Cavalier",
+      age: 3,
+    };
+
+    const respone = await request(app)
+      .patch("/updatepet/mocked-uuid")
+      .expect(200);
+
+    expect(respone.body).toEqual(mockPet);
+  });
+  it("Should delete a pet", async () => {
+    const respone = await request(app)
+      .delete("/deletepet/mocked-uuid")
+      .expect(204);
+    expect(respone.body).toEqual({});
   });
 });

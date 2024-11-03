@@ -43,7 +43,6 @@ describe.only("AdoptionService Integration Tests", () => {
     expect(response.body).toEqual(mockAdoption);
   });
   it("Should uppdate an adoption by id", async () => {
-    const id = "1";
     const mockAdoption = {
       id: "mocked-uuid",
       petId: "1",
@@ -64,5 +63,4 @@ describe.only("AdoptionService Integration Tests", () => {
 
     expect(respone.body).toEqual({});
   });
-
 });

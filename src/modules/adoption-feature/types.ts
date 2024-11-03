@@ -10,6 +10,9 @@ export type Db = {
     getAllAdoptions: () => Promise<AdoptionData[]>;
     getAdoptionById: (id: string) => Promise<AdoptionData | undefined>;
     deleteAdoption: (id: string) => Promise<void>;
-    patchAdoption: (id: string, data: Partial<AdoptionData>) => Promise<void>;
+    patchAdoption: (
+      id: string,
+      data: Partial<AdoptionData>
+    ) => Promise<AdoptionData>;
   };
 };
