@@ -19,7 +19,7 @@ export function routerController(service: ReturnType<typeof PetService>) {
     }
   });
   router.get("/:id", async (req, res) => {
-    const pet = await service.getPetById(req.params.id as string);
+    const pet = await service.getPetById({ id: req.params.id as string });
     if (!pet) {
       res.status(404).send({ error: "Adoption not found" });
       return;
