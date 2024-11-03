@@ -8,5 +8,6 @@ export type PetType = {
 export type PetDb = {
   pets: {
     create: (data: PetType) => Promise<void>;
+    getAllPets: () => Promise<PetType[]>;
   };
 };
