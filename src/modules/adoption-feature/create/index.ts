@@ -4,8 +4,8 @@ import { Input } from "./input";
 export const createAdoption = (db: Db) => async (input: Input) => {
   const id = v4();
   const adoptionData = {
-    id,
     ...input,
+    id: id,
   };
 
   try {

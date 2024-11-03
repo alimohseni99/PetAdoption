@@ -7,8 +7,8 @@ export function createAdoptionRoute(db: Db) {
   const router = Router();
 
   router.post("/", async (req, res) => {
-    const { petId, adopterName } = req.body;
-    const adoption = await service.adopt({ petId, adopterName });
+    const { petId, adopterName, petName } = req.body;
+    const adoption = await service.adopt({ petId, petName, adopterName });
     res.status(201).json(adoption);
   });
 

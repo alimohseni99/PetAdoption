@@ -6,8 +6,9 @@ export function createAdoptionDb(): Db {
   return {
     adoption: {
       getAllAdoptions: async () => data,
-      create: async (adoptionData: AdoptionData): Promise<void> => {
+      create: async (adoptionData: AdoptionData): Promise<AdoptionData> => {
         data.push(adoptionData);
+        return adoptionData;
       },
 
       getAdoptionById: async (
