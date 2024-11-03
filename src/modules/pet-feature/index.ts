@@ -11,5 +11,6 @@ export function createPetModule(db: PetDb) {
     getAll: router,
     deletePet: router,
     getPetById: router,
+    updatePet: router,
   };
 }

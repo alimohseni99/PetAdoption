@@ -42,10 +42,10 @@ export function routerController(service: ReturnType<typeof AdoptionService>) {
   });
   router.patch("/:id", async (req, res) => {
     try {
-      await service.patchAdoption({ id: req.params.id }, req.body);
-      const updatedAdoption = await service.getAdoptionById({
-        id: req.params.id as string,
-      });
+      const updatedAdoption = await service.patchAdoption(
+        { id: req.params.id },
+        req.body
+      );
       res.json(updatedAdoption);
     } catch (error) {
       console.log(error);

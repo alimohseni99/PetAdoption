@@ -11,6 +11,7 @@ const db: PetDb = {
     getAllPets: jest.fn().mockName("getAllMock"),
     deletePet: jest.fn().mockName("deleteMock"),
     getPetById: jest.fn().mockName("getByIdMock"),
+    updatePet: jest.fn().mockName("updateMock"),
   },
 };
 

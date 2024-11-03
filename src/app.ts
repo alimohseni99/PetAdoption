@@ -61,6 +61,17 @@ function createPetDb(): PetDb {
         }
         return pet;
       },
+      updatePet: async (
+        id: string,
+        petData: Partial<PetType>
+      ): Promise<void> => {
+        const index = data.findIndex((pet) => pet.id === id);
+
+        if (index === -1) {
+          throw new Error(`pet with id ${id} not found`);
+        }
+        data[index] = { ...data[index], ...petData };
+      },
     },
   };
 }
@@ -85,6 +96,6 @@ export function createApp() {
   app.use("/getallpets", petModule.getAll);
   app.use("/deletepet", petModule.deletePet);
   app.use("/getpet", petModule.getPetById);
-
+  app.use("/updatepet", petModule.updatePet);
   return app;
 }
