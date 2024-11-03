@@ -47,6 +47,13 @@ function createPetDb(): PetDb {
       create: async (PetInfo: PetType): Promise<void> => {
         data.push(PetInfo);
       },
+      deletePet: async (id: string): Promise<void> => {
+        const index = data.findIndex((pet) => pet.id === id);
+        if (index === -1) {
+          throw new Error(`Pet with id ${id} not found`);
+        }
+        data.splice(index, 1);
+      },
     },
   };
 }
@@ -69,6 +76,7 @@ export function createApp() {
   const petModule = createPetModule(createPetDb());
   app.use("/addPet", petModule.addPet);
   app.use("/getallpets", petModule.getAll);
+  app.use("/deletepet", petModule.deletePet);
 
   return app;
 }

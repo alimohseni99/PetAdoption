@@ -37,7 +37,6 @@ export function routerController(service: ReturnType<typeof AdoptionService>) {
       });
       res.status(204).send();
     } catch (error) {
-      console.log(error);
       res.status(500).send({ error: "Failed to delete adoption" });
     }
   });

@@ -19,5 +19,14 @@ export function routerController(service: ReturnType<typeof PetService>) {
     }
   });
 
+  router.delete("/:id", async (req, res) => {
+    try {
+      await service.deletePet(req.params.id as string);
+      res.status(204).send();
+    } catch (error) {
+      res.status(500).send({ error: "failed to delete the pet" });
+    }
+  });
+
   return router;
 }

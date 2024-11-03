@@ -9,6 +9,7 @@ const db: PetDb = {
   pets: {
     create: jest.fn().mockName("createMock"),
     getAllPets: jest.fn().mockName("getAllMock"),
+    deletePet: jest.fn().mockName("deletePetMock"),
   },
 };
 
