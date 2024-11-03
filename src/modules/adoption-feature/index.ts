@@ -4,8 +4,10 @@ import { Db } from "./types";
 
 export function createAdoptionModule(db: Db) {
   const service = AdoptionService(db);
+  const router = routerController(service);
   return {
-    adopt: routerController(service),
-    getAllAdoptions: routerController(service),
+    adopt: router,
+    getAllAdoptions: router,
+    getAdoptionById: router,
   };
 }

@@ -8,6 +8,6 @@ export type Db = {
   adoption: {
     create: (data: AdoptionData) => Promise<void>;
     getAllAdoptions: () => Promise<AdoptionData[]>;
-    getAdoptionById: (id: string) => Promise<AdoptionData>;
+    getAdoptionById: (id: string) => Promise<AdoptionData | undefined>;
   };
 };

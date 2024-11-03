@@ -9,6 +9,7 @@ const db: Db = {
   adoption: {
     create: jest.fn().mockName("createMock"),
     getAllAdoptions: jest.fn().mockName("getAllMock"),
+    getAdoptionById: jest.fn().mockName("getByIdMock"),
   },
 };
 

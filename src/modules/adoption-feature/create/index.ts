@@ -12,7 +12,7 @@ export const createAdoption = (db: Db) => async (input: Input) => {
   try {
     await db.adoption.create(adoptionData);
   } catch (error) {
-    throw new Error("Failede to craete adoption");
+    throw new Error("Failed to craete adoption");
   }
   return { id };
 };

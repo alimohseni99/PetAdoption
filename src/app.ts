@@ -10,7 +10,11 @@ function createDb(): Db {
         data.push(adoptionData);
       },
       getAdoptionById: async (id) => {
-        return data.find((adoption) => adoption.id === id);
+        const adoption = data.find((adoption) => adoption.id === id);
+        if (!adoption) {
+          throw new Error(`Adoption with id ${id} not found`);
+        }
+        return adoption;
       },
     },
   };
@@ -26,6 +30,7 @@ export function createApp() {
   const adoptionModule = createAdoptionModule(createDb());
   app.use("/adopt", adoptionModule.adopt);
   app.use("/getall", adoptionModule.getAllAdoptions);
+  app.use("/get", adoptionModule.getAdoptionById);
 
   return app;
 }
