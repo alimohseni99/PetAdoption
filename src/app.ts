@@ -54,6 +54,13 @@ function createPetDb(): PetDb {
         }
         data.splice(index, 1);
       },
+      getPetById: async (id: string): Promise<PetType> => {
+        const pet = data.find((pet) => pet.id === id);
+        if (!pet) {
+          throw new Error(`pet with id ${id} not found`);
+        }
+        return pet;
+      },
     },
   };
 }
@@ -77,6 +84,7 @@ export function createApp() {
   app.use("/addPet", petModule.addPet);
   app.use("/getallpets", petModule.getAll);
   app.use("/deletepet", petModule.deletePet);
+  app.use("/getpet", petModule.getPetById);
 
   return app;
 }

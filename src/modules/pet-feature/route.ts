@@ -18,6 +18,14 @@ export function routerController(service: ReturnType<typeof PetService>) {
       res.status(500).send({ error: "Failed to fetch pets" });
     }
   });
+  router.get("/:id", async (req, res) => {
+    const pet = await service.getPetById(req.params.id as string);
+    if (!pet) {
+      res.status(404).send({ error: "Adoption not found" });
+      return;
+    }
+    res.json(pet);
+  });
 
   router.delete("/:id", async (req, res) => {
     try {

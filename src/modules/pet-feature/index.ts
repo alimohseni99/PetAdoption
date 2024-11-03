@@ -10,5 +10,6 @@ export function createPetModule(db: PetDb) {
     addPet: router,
     getAll: router,
     deletePet: router,
+    getPetById: router,
   };
 }
