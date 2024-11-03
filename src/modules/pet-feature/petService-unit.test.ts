@@ -42,7 +42,7 @@ describe("PetService", () => {
     expect(db.pets.getPetById).toHaveBeenCalled();
   });
   it("should update a pet", async () => {
-    const id = "1";
+    const id = { id: "1" };
     const mockResult = {
       id: "mocked-uuid",
       name: "Bruno",

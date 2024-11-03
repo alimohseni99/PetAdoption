@@ -38,7 +38,10 @@ export function routerController(service: ReturnType<typeof PetService>) {
 
   router.patch("/:id", async (req, res) => {
     try {
-      const updatedPet = await service.updatePet(req.params.id, req.body);
+      const updatedPet = await service.updatePet(
+        { id: req.params.id as string },
+        req.body
+      );
       res.status(200).json(updatedPet);
     } catch (error) {
       res.status(500).send({ error: "failed to update pet" });
