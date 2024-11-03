@@ -1,7 +1,8 @@
 import { v4 } from "uuid";
-import { PetDb, PetType } from "../types";
+import { PetDb } from "../types";
+import { Input } from "./input";
 
-export const createPetForAdoption = (db: PetDb) => async (input: PetType) => {
+export const createPetForAdoption = (db: PetDb) => async (input: Input) => {
   const id = v4();
   const petData = {
     ...input,
