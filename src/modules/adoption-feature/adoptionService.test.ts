@@ -8,7 +8,7 @@ jest.mock("uuid", () => ({
 const db: Db = {
   adoption: {
     create: jest.fn().mockName("createMock"),
-    getAll: jest.fn().mockName("getAllMock"),
+    getAllAdoptions: jest.fn().mockName("getAllMock"),
   },
 };
 
@@ -27,7 +27,6 @@ describe("AdoptionService", () => {
   });
   it("should get all adoptions", async () => {
     await adoptionService.getAll();
-
-    expect(db.adoption.getAll).toHaveBeenCalled();
+    expect(db.adoption.getAllAdoptions).toHaveBeenCalled();
   });
 });

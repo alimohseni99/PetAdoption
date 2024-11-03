@@ -5,9 +5,12 @@ function createDb(): Db {
   const data: AdoptionData[] = [];
   return {
     adoption: {
-      getAll: async () => data,
+      getAllAdoptions: async () => data,
       create: async (adoptionData) => {
         data.push(adoptionData);
+      },
+      getAdoptionById: async (id) => {
+        return data.find((adoption) => adoption.id === id);
       },
     },
   };
@@ -22,7 +25,7 @@ export function createApp() {
 
   const adoptionModule = createAdoptionModule(createDb());
   app.use("/adopt", adoptionModule.adopt);
-  app.use("/getall", adoptionModule.getAll);
+  app.use("/getall", adoptionModule.getAllAdoptions);
 
   return app;
 }
