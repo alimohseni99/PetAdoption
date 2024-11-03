@@ -22,4 +22,12 @@ describe("PetService Integration Tests", () => {
       age: 3,
     });
   });
+  it("should get all pets", async () => {
+    const mockPets = [
+      { id: "mocked-uuid", name: "Daniel", breed: "Cavalier", age: 3 },
+    ];
+
+    const respone = await request(app).get("/getallpets").expect(200);
+    expect(respone.body).toEqual(mockPets);
+  });
 });

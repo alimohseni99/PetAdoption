@@ -39,8 +39,8 @@ describe.only("AdoptionService Integration Tests", () => {
       petId: "1",
       adopterName: "Daniel",
     };
-    const res = await request(app).get("/get/mocked-uuid").expect(200);
-    expect(res.body).toEqual(mockAdoption);
+    const response = await request(app).get("/get/mocked-uuid").expect(200);
+    expect(response.body).toEqual(mockAdoption);
   });
   it("Should uppdate an adoption by id", async () => {
     const id = "1";
@@ -58,8 +58,11 @@ describe.only("AdoptionService Integration Tests", () => {
   });
 
   it("Should delete an adoption by id", async () => {
-    const res = await request(app).delete("/delete/mocked-uuid").expect(204);
+    const respone = await request(app)
+      .delete("/delete/mocked-uuid")
+      .expect(204);
 
-    expect(res.body).toEqual({});
+    expect(respone.body).toEqual({});
   });
+
 });
