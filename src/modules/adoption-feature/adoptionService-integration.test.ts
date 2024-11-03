@@ -42,6 +42,20 @@ describe.only("AdoptionService Integration Tests", () => {
     const res = await request(app).get("/get/mocked-uuid").expect(200);
     expect(res.body).toEqual(mockAdoption);
   });
+  it("Should uppdate an adoption by id", async () => {
+    const id = "1";
+    const mockAdoption = {
+      id: "mocked-uuid",
+      petId: "1",
+      adopterName: "Daniel",
+    };
+
+    const response = await request(app)
+      .patch("/update/mocked-uuid")
+      .expect(200);
+
+    expect(response.body).toEqual(mockAdoption);
+  });
 
   it("Should delete an adoption by id", async () => {
     const res = await request(app).delete("/delete/mocked-uuid").expect(204);

@@ -49,8 +49,7 @@ export function createApp() {
   app.use("/getall", adoptionModule.getAllAdoptions);
   app.use("/get", adoptionModule.getAdoptionById);
   app.use("/delete", adoptionModule.deleteAdoption);
-  app.use("/patch", adoptionModule.patchAdoption);
+  app.use("/update", adoptionModule.patchAdoption);
 
   return app;
 }
-
