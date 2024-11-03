@@ -11,10 +11,7 @@ const db: Db = {
     getAllAdoptions: jest.fn().mockName("getAllMock"),
     getAdoptionById: jest.fn().mockName("getByIdMock"),
     deleteAdoption: jest.fn().mockName("deleteMock"),
-    patchAdoption: jest
-      .fn()
-      .mockName("updateMock")
-      .mockImplementation((id, data) => data),
+    patchAdoption: jest.fn().mockName("updateMock"),
   },
 };
 
@@ -46,6 +43,7 @@ describe("AdoptionService", () => {
   it("should update an adoption", async () => {
     const id = "1";
     const mockResult = { id: "1", adopterName: "Daniel" };
+    (db.adoption.patchAdoption as jest.Mock).mockResolvedValue(mockResult);
     const result = await adoptionService.patchAdoption({ id }, mockResult);
     expect(result).toEqual(mockResult);
   });
