@@ -22,7 +22,7 @@ describe("PetService Integration Tests", () => {
       age: 3,
     });
   });
-  it("should get all pets", async () => {
+  it("Should get all pets", async () => {
     const mockPets = [
       { id: "mocked-uuid", name: "Daniel", breed: "Cavalier", age: 3 },
     ];
@@ -31,10 +31,21 @@ describe("PetService Integration Tests", () => {
     expect(respone.body).toEqual(mockPets);
   });
 
-  it("should delete a pet", async () => {
+  it("Should delete a pet", async () => {
     const respone = await request(app)
       .delete("/deletepet/mocked-uuid")
       .expect(204);
     expect(respone.body).toEqual({});
+  });
+
+  it.skip("Should return a pet by id ", async () => {
+    const mockPet = {
+      id: "mocked-uuid",
+      name: "Daniel",
+      breed: "Cavalier",
+      age: 3,
+    };
+    const respone = await request(app).get("/getpet/mocked-uuid").expect(200);
+    expect(respone.body).toEqual(mockPet);
   });
 });
