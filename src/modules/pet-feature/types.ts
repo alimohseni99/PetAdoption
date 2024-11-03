@@ -7,6 +7,7 @@ export type PetType = {
 
 export type PetDb = {
   pets: {
+    deletePet: (id: string) => Promise<void>;
     create: (data: PetType) => Promise<void>;
     getAllPets: () => Promise<PetType[]>;
   };
