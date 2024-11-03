@@ -10,6 +10,7 @@ const db: Db = {
     create: jest.fn().mockName("createMock"),
     getAllAdoptions: jest.fn().mockName("getAllMock"),
     getAdoptionById: jest.fn().mockName("getByIdMock"),
+    deleteAdoption: jest.fn().mockName("deleteMock"),
   },
 };
 
@@ -33,5 +34,9 @@ describe("AdoptionService", () => {
   it("should get an adoption by id", async () => {
     await adoptionService.getAdoptionById({ id: "1" });
     expect(db.adoption.getAdoptionById).toHaveBeenCalledWith("1");
+  });
+  it("should delete an adoption", async () => {
+    await adoptionService.deleteAdoption({ id: "1" });
+    expect(db.adoption.deleteAdoption).toHaveBeenCalledWith("1");
   });
 });
