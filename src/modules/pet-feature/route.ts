@@ -1,8 +1,10 @@
 import { Router } from "express";
-import { PetService } from "./service";
+import { PetDb } from "./types";
+import { createPetService } from "./service";
 
-export function routerController(service: ReturnType<typeof PetService>) {
+export function createPetRouter(db: PetDb) {
   const router = Router();
+  const service = createPetService(db);
 
   router.post("/", async (req, res) => {
     const { id, name, breed, age } = req.body;

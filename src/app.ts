@@ -95,10 +95,7 @@ export function createApp() {
   app.use("/update", adoptionModule.patchAdoption);
 
   const petModule = createPetModule(createPetDb());
-  app.use("/addPet", petModule.addPet);
-  app.use("/getallpets", petModule.getAll);
-  app.use("/deletepet", petModule.deletePet);
-  app.use("/getpet", petModule.getPetById);
-  app.use("/updatepet", petModule.updatePet);
+  app.use("/pets", petModule);
+
   return app;
 }

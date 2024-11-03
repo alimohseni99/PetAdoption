@@ -5,7 +5,7 @@ import { getAllPets } from "./get-all";
 import { PetDb } from "./types";
 import { updatePet } from "./update";
 
-export function PetService(db: PetDb) {
+export function createPetService(db: PetDb) {
   return {
     addPet: createPetForAdoption(db),
     getAllPets: getAllPets(db),

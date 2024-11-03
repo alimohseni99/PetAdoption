@@ -1,4 +1,4 @@
-import { PetService } from "./service";
+import { createPetService } from "./service";
 import { PetDb } from "./types";
 
 jest.mock("uuid", () => ({
@@ -15,7 +15,7 @@ const db: PetDb = {
   },
 };
 
-const petService = PetService(db);
+const petService = createPetService(db);
 
 describe("PetService", () => {
   it("should create an pet", async () => {
