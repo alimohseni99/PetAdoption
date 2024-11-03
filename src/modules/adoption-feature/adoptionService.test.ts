@@ -46,7 +46,7 @@ describe("AdoptionService", () => {
   it("should update an adoption", async () => {
     const id = "1";
     const mockResult = { id: "1", adopterName: "Daniel" };
-    const result = await adoptionService.patchAdoption(id, mockResult);
+    const result = await adoptionService.patchAdoption({ id }, mockResult);
     expect(result).toEqual(mockResult);
   });
 });
