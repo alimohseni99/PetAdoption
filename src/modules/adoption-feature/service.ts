@@ -3,7 +3,7 @@ import { deleteAdoption } from "./delete";
 import { getAdoptionById } from "./get";
 import { getAllAdoptions } from "./get-all";
 import { Db } from "./types";
-import { patchAdoption } from "./update";
+import { updateAdoption } from "./update";
 
 export function AdoptionService(db: Db) {
   return {
@@ -11,6 +11,6 @@ export function AdoptionService(db: Db) {
     getAll: getAllAdoptions(db),
     getAdoptionById: getAdoptionById(db),
     deleteAdoption: deleteAdoption(db),
-    patchAdoption: patchAdoption(db),
+    patchAdoption: updateAdoption(db),
   };
 }

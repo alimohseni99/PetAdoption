@@ -11,5 +11,6 @@ export type PetDb = {
     create: (data: PetType) => Promise<void>;
     getAllPets: () => Promise<PetType[]>;
     getPetById: (id: string) => Promise<PetType>;
+    updatePet: (id: string, data: Partial<PetType>) => Promise<void>;
   };
 };
