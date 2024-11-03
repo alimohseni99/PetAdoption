@@ -30,4 +30,11 @@ describe("PetService Integration Tests", () => {
     const respone = await request(app).get("/getallpets").expect(200);
     expect(respone.body).toEqual(mockPets);
   });
+
+  it("should delete a pet", async () => {
+    const respone = await request(app)
+      .delete("/deletepet/mocked-uuid")
+      .expect(204);
+    expect(respone.body).toEqual({});
+  });
 });
