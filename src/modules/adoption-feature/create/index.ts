@@ -5,8 +5,7 @@ export const createAdoption = (db: Db) => async (input: Input) => {
   const id = v4();
   const adoptionData = {
     id,
-    petId: input.petId,
-    adopterName: input.adopterName,
+    ...input,
   };
 
   try {
