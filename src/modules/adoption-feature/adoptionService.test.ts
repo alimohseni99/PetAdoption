@@ -11,6 +11,10 @@ const db: Db = {
     getAllAdoptions: jest.fn().mockName("getAllMock"),
     getAdoptionById: jest.fn().mockName("getByIdMock"),
     deleteAdoption: jest.fn().mockName("deleteMock"),
+    patchAdoption: jest
+      .fn()
+      .mockName("updateMock")
+      .mockImplementation((id, data) => data),
   },
 };
 
@@ -38,5 +42,11 @@ describe("AdoptionService", () => {
   it("should delete an adoption", async () => {
     await adoptionService.deleteAdoption({ id: "1" });
     expect(db.adoption.deleteAdoption).toHaveBeenCalledWith("1");
+  });
+  it("should update an adoption", async () => {
+    const id = "1";
+    const mockResult = { id: "1", adopterName: "Daniel" };
+    const result = await adoptionService.patchAdoption(id, mockResult);
+    expect(result).toEqual(mockResult);
   });
 });
