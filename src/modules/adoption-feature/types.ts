@@ -9,6 +9,6 @@ export type Db = {
     create: (data: AdoptionData) => Promise<void>;
     getAllAdoptions: () => Promise<AdoptionData[]>;
     getAdoptionById: (id: string) => Promise<AdoptionData | undefined>;
-    deteleAdoption: (id: string) => Promise<void>;
+    deleteAdoption: (id: string) => Promise<void>;
   };
 };

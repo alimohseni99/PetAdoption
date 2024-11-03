@@ -31,5 +31,14 @@ export function routerController(service: ReturnType<typeof AdoptionService>) {
     res.json(adoption);
   });
 
+  router.delete("/:id", async (req, res) => {
+    try {
+      await service.deleteAdoption(req.params.id as string);
+      res.status(204).send();
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ error: "Failed to delete adoption" });
+    }
+  });
   return router;
 }
