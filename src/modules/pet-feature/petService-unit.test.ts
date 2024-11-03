@@ -31,4 +31,8 @@ describe("PetService", () => {
     await petService.getAllPets();
     expect(db.pets.getAllPets).toHaveBeenCalled();
   });
+  it("should delete a pet", async () => {
+    await petService.deletePet("1");
+    expect(db.pets.deletePet).toHaveBeenCalled();
+  });
 });
