@@ -1,15 +1,6 @@
-import { routerController } from "./route";
-import { AdoptionService } from "./service";
+import { createAdoptionRoute } from "./route";
 import { Db } from "./types";
 
 export function createAdoptionModule(db: Db) {
-  const service = AdoptionService(db);
-  const router = routerController(service);
-  return {
-    adopt: router,
-    getAllAdoptions: router,
-    getAdoptionById: router,
-    deleteAdoption: router,
-    patchAdoption: router,
-  };
+  return createAdoptionRoute(db);
 }

@@ -1,7 +1,9 @@
 import { Router } from "express";
-import { AdoptionService } from "./service";
+import { createAdoptionService } from "./service";
+import { Db } from "./types";
 
-export function routerController(service: ReturnType<typeof AdoptionService>) {
+export function createAdoptionRoute(db: Db) {
+  const service = createAdoptionService(db);
   const router = Router();
 
   router.post("/", async (req, res) => {

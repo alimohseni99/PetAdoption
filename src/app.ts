@@ -87,12 +87,7 @@ export function createApp() {
   });
 
   const adoptionModule = createAdoptionModule(createDb());
-
-  app.use("/adopt", adoptionModule.adopt);
-  app.use("/getall", adoptionModule.getAllAdoptions);
-  app.use("/get", adoptionModule.getAdoptionById);
-  app.use("/delete", adoptionModule.deleteAdoption);
-  app.use("/update", adoptionModule.patchAdoption);
+  app.use("/adopt", adoptionModule);
 
   const petModule = createPetModule(createPetDb());
   app.use("/pets", petModule);
