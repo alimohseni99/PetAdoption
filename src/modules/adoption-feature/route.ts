@@ -42,5 +42,16 @@ export function routerController(service: ReturnType<typeof AdoptionService>) {
       res.status(500).send({ error: "Failed to delete adoption" });
     }
   });
+  router.patch("/:id", async (req, res) => {
+    try {
+      await service.patchAdoption(req.params.id as string, {
+        ...req.body,
+      });
+      res.status(204).send();
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ error: "Failed to update adoption" });
+    }
+  });
   return router;
 }

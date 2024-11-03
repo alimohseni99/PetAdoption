@@ -10,5 +10,6 @@ export function createAdoptionModule(db: Db) {
     getAllAdoptions: router,
     getAdoptionById: router,
     deleteAdoption: router,
+    patchAdoption: router,
   };
 }

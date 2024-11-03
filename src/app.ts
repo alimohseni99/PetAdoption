@@ -23,6 +23,16 @@ function createDb(): Db {
         }
         data.splice(index, 1);
       },
+      patchAdoption: async (
+        id: string,
+        adoptionData: Partial<AdoptionData>
+      ): Promise<void> => {
+        const index = data.findIndex((adoption) => adoption.id === id);
+        if (index === -1) {
+          throw new Error(`Adoption with id ${id} not found`);
+        }
+        data[index] = { ...data[index], ...adoptionData };
+      },
     },
   };
 }
@@ -39,6 +49,7 @@ export function createApp() {
   app.use("/getall", adoptionModule.getAllAdoptions);
   app.use("/get", adoptionModule.getAdoptionById);
   app.use("/delete", adoptionModule.deleteAdoption);
+  app.use("/patch", adoptionModule.patchAdoption);
 
   return app;
 }
