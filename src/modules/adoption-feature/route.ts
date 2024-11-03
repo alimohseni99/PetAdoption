@@ -7,7 +7,8 @@ export function routerController(service: ReturnType<typeof AdoptionService>) {
   router.post("/", async (req, res) => {
     const { petId, adopterName } = req.body;
     const { id } = await service.adopt({ petId, adopterName });
-    res.status(201).json({ id });
+    const adoption = await service.getAdoptionById({ id });
+    res.status(201).json(adoption);
   });
 
   router.get("/", async (req, res) => {

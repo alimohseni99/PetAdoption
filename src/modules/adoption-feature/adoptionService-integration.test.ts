@@ -1,6 +1,6 @@
-import { AdoptionService } from "./service";
+import request from "supertest";
+import { createApp } from "../../app";
 import { Db } from "./types";
-
 
 jest.mock("uuid", () => ({
   v4: jest.fn(() => "mocked-uuid"),
@@ -15,3 +15,17 @@ const db: Db = {
     patchAdoption: jest.fn().mockName("updateMock"),
   },
 };
+
+describe.only("AdoptionService Integration Tests", () => {
+  const app = createApp();
+
+  it("Should create an adoption", async () => {
+    const input = { petId: "1", adopterName: "Daniel" };
+    const response = await request(app).post("/adopt").send(input).expect(201);
+    expect(response.body).toEqual({
+      id: "mocked-uuid",
+      petId: "1",
+      adopterName: "Daniel",
+    });
+  });
+});
