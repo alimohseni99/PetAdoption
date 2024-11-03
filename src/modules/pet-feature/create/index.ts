@@ -13,5 +13,5 @@ export const createPetForAdoption = (db: PetDb) => async (input: PetType) => {
   } catch (error) {
     throw new Error("Failed to add pet for adoption");
   }
-  return { petData };
+  return petData;
 };
