@@ -83,15 +83,10 @@ The Pet Adoption API allows users to manage pet adoptions. Users can view availa
 
 ## Testing
 
-1. Run integration tests:
+1. Run tests:
 
    ```bash
    npm test
-   ```
-
-2. Run unit tests:
-   ```bash
-   npm run test:unit
    ```
 
 ## Project Board
