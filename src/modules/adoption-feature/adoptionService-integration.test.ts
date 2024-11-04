@@ -5,7 +5,7 @@ jest.mock("uuid", () => ({
   v4: jest.fn(() => "mocked-uuid"),
 }));
 
-describe.only("AdoptionService Integration Tests", () => {
+describe("AdoptionService Integration Tests", () => {
   const app = createApp();
 
   beforeEach(async () => {
@@ -29,17 +29,17 @@ describe.only("AdoptionService Integration Tests", () => {
         adopterName: "Daniel",
       },
     ];
-    const response = await request(app).get("/getall").expect(200);
+    const response = await request(app).get("/adopt").expect(200);
     expect(response.body).toEqual(mockAdoptions);
   });
 
-  it.skip("Should return an adoption by id", async () => {
+  it("Should return an adoption by id", async () => {
     const mockAdoption = {
       id: "mocked-uuid",
       petId: "1",
       adopterName: "Daniel",
     };
-    const response = await request(app).get("/get/mocked-uuid").expect(200);
+    const response = await request(app).get("/adopt/mocked-uuid").expect(200);
     expect(response.body).toEqual(mockAdoption);
   });
   it("Should uppdate an adoption by id", async () => {
@@ -49,17 +49,13 @@ describe.only("AdoptionService Integration Tests", () => {
       adopterName: "Daniel",
     };
 
-    const response = await request(app)
-      .patch("/update/mocked-uuid")
-      .expect(200);
+    const response = await request(app).patch("/adopt/mocked-uuid").expect(200);
 
     expect(response.body).toEqual(mockAdoption);
   });
 
   it("Should delete an adoption by id", async () => {
-    const respone = await request(app)
-      .delete("/delete/mocked-uuid")
-      .expect(204);
+    const respone = await request(app).delete("/adopt/mocked-uuid").expect(204);
 
     expect(respone.body).toEqual({});
   });
