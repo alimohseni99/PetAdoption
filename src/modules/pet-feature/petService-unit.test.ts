@@ -1,5 +1,5 @@
 import { createPetService } from "./service";
-import { PetDb } from "./types";
+import { PetDb, PetType } from "./types";
 
 jest.mock("uuid", () => ({
   v4: jest.fn(() => "mocked-uuid"),
@@ -30,7 +30,15 @@ describe("PetService", () => {
     });
   });
   it("should get all available pets", async () => {
-    await petService.getAllPets();
+    const mockPets: PetType[] = [
+      { id: "1", name: "Daniel", breed: "Cavalier", age: 3 },
+      { id: "2", name: "Bruno", breed: "Husky", age: 4 },
+    ];
+    (db.pets.getAllPets as jest.Mock).mockResolvedValue(mockPets);
+
+    const result = await petService.getAllPets();
+
+    expect(result).toEqual(mockPets);
     expect(db.pets.getAllPets).toHaveBeenCalled();
   });
   it("should delete a pet", async () => {
@@ -38,8 +46,14 @@ describe("PetService", () => {
     expect(db.pets.deletePet).toHaveBeenCalled();
   });
   it("should get a pet by id", async () => {
-    await petService.getPetById({ id: "1" });
-    expect(db.pets.getPetById).toHaveBeenCalled();
+    const id = "1";
+    const mockPet = { id, name: "Daniel", breed: "Cavalier", age: 3 };
+    (db.pets.getPetById as jest.Mock).mockResolvedValue(mockPet);
+
+    const result = await petService.getPetById({ id: "1" });
+
+    expect(result).toEqual(mockPet);
+    expect(db.pets.getPetById).toHaveBeenCalledWith(id);
   });
   it("should update a pet", async () => {
     const id = { id: "1" };

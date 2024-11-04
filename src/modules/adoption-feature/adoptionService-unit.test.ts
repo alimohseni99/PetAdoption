@@ -1,4 +1,4 @@
-import { AdoptionService } from "./service";
+import { createAdoptionService } from "./service";
 import { Db } from "./types";
 
 jest.mock("uuid", () => ({
@@ -15,16 +15,17 @@ const db: Db = {
   },
 };
 
-const adoptionService = AdoptionService(db);
+const adoptionService = createAdoptionService(db);
 
 describe("AdoptionService", () => {
   it("should create an adoption", async () => {
-    const input = { petId: "1", adopterName: "Daniel" };
+    const input = { petId: "1", petName: "Bruno", adopterName: "Daniel" };
     await adoptionService.adopt(input);
 
     expect(db.adoption.create).toHaveBeenCalledWith({
       id: "mocked-uuid",
       petId: "1",
+      petName: "Bruno",
       adopterName: "Daniel",
     });
   });
