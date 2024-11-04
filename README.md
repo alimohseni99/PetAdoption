@@ -78,7 +78,7 @@ The Pet Adoption API allows users to manage pet adoptions. Users can view availa
 
 3. Start the server:
    ```bash
-   npm start
+   npm run dev
    ```
 
 ## Testing
