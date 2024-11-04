@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { PetDb } from "./types";
 import { createPetService } from "./service";
+import { PetDb } from "./types";
 
 export function createPetRouter(db: PetDb) {
   const router = Router();
@@ -40,11 +40,11 @@ export function createPetRouter(db: PetDb) {
 
   router.patch("/:id", async (req, res) => {
     try {
-      const updatedPet = await service.updatePet(
-        { id: req.params.id as string },
-        req.body
-      );
-      res.status(200).json(updatedPet);
+      res
+        .status(200)
+        .json(
+          await service.updatePet({ id: req.params.id as string }, req.body)
+        );
     } catch (error) {
       res.status(500).send({ error: "failed to update pet" });
     }
